@@ -1,0 +1,13 @@
+LAMMPS (29 Sep 2021 - Update 2)
+# bulk water
+
+units           metal
+boundary        p p p
+atom_style      atomic
+
+neighbor        2.0 bin
+neigh_modify    every 10 delay 0 check no
+
+read_data	water.lmp
+ERROR: Cannot open file water.lmp: No such file or directory (../read_data.cpp:312)
+Last command: read_data	water.lmp
