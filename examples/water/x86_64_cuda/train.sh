@@ -12,5 +12,6 @@ mkdir -p $model_path
 mkdir -p $model_path/double
 
 dp train ../se_e2_a/input.json
-dp freeze -o $model_path/double/graph.pb
-dp test -m $model_path/double/graph.pb -s ../data/data_3 -n 1
+dp freeze -o ../model/double/graph.pb
+dp test -m ../model/double/graph.pb -s ../data/data_3 -n 1
+dp compress -i ../model/double/graph.pb -o ../model/double/graph-compress.pb 
