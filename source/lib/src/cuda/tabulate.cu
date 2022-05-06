@@ -164,7 +164,11 @@ __global__ void tabulate_fusion_se_a_fifth_order_polynomial(
   int breakpoint = nnei - 1;
 
   FPTYPE sum[MTILE] = {0.f};
+<<<<<<< HEAD
   int mark_table_idx = 0;
+=======
+  int mark_table_idx = -1;
+>>>>>>> v2.1.1
   FPTYPE var[6];
   for (int ii = 0; ii < nnei; ii++) {
     FPTYPE xx = em_x[block_idx * nnei + ii];
@@ -518,7 +522,11 @@ __global__ void tabulate_fusion_se_r_fifth_order_polynomial(
   const int block_idx = blockIdx.x;   // nloc
   const int thread_idx = threadIdx.x; // last_layer_size
 
+<<<<<<< HEAD
   int mark_table_idx = 0;
+=======
+  int mark_table_idx = -1;
+>>>>>>> v2.1.1
   FPTYPE var[6];
   for (int ii = 0; ii < nnei; ii++) {
     FPTYPE xx = em[block_idx * nnei + ii];
@@ -528,6 +536,10 @@ __global__ void tabulate_fusion_se_r_fifth_order_polynomial(
       load_polynomial_params(var, table, table_idx, thread_idx, last_layer_size);
     }
     out[block_idx * nnei * last_layer_size + ii * last_layer_size + thread_idx] = var[0] + (var[1] + (var[2] + (var[3] + (var[4] + var[5] * xx) * xx) * xx) * xx) * xx;
+<<<<<<< HEAD
+=======
+    mark_table_idx = table_idx;
+>>>>>>> v2.1.1
   }
 }
 

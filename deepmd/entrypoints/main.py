@@ -392,7 +392,11 @@ def parse_args(args: Optional[List[str]] = None):
     parser_transform.add_argument(
         'FROM',
         type = str,
+<<<<<<< HEAD
         choices = ['1.2', '1.3', '2.0'],
+=======
+        choices = ['1.0', '1.1', '1.2', '1.3', '2.0'],
+>>>>>>> v2.1.1
         help="The original model compatibility",
     )
     parser_transform.add_argument(

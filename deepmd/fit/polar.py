@@ -6,7 +6,11 @@ from deepmd.env import tf
 from deepmd.common import add_data_requirement, cast_precision, get_activation_func, get_precision, ACTIVATION_FN_DICT, PRECISION_DICT, docstring_parameter
 from deepmd.utils.argcheck import list_to_doc
 from deepmd.utils.network import one_layer, one_layer_rand_seed_shift
+<<<<<<< HEAD
 from deepmd.utils.graph import get_fitting_net_variables
+=======
+from deepmd.utils.graph import get_fitting_net_variables_from_graph_def
+>>>>>>> v2.1.1
 from deepmd.descriptor import DescrptLocFrame
 from deepmd.descriptor import DescrptSeA
 from deepmd.fit.fitting import Fitting
@@ -375,6 +379,7 @@ class PolarFittingSeA (Fitting) :
         return tf.reshape(outs, [-1])
 
     def init_variables(self,
+<<<<<<< HEAD
                        model_file: str
     ) -> None:
         """
@@ -386,6 +391,25 @@ class PolarFittingSeA (Fitting) :
             The input frozen model file
         """
         self.fitting_net_variables = get_fitting_net_variables(model_file)
+=======
+                       graph: tf.Graph,
+                       graph_def: tf.GraphDef,
+                       suffix : str = "",
+    ) -> None:
+        """
+        Init the fitting net variables with the given dict
+
+        Parameters
+        ----------
+        graph : tf.Graph
+            The input frozen model graph
+        graph_def : tf.GraphDef
+            The input frozen model graph_def
+        suffix : str
+            suffix to name scope
+        """
+        self.fitting_net_variables = get_fitting_net_variables_from_graph_def(graph_def)
+>>>>>>> v2.1.1
 
 
     def enable_mixed_precision(self, mixed_prec : dict = None) -> None:
@@ -511,6 +535,7 @@ class GlobalPolarFittingSeA () :
         return tf.reshape(outs, [-1])
     
     def init_variables(self,
+<<<<<<< HEAD
                        model_file: str
     ) -> None:
         """
@@ -522,6 +547,25 @@ class GlobalPolarFittingSeA () :
             The input frozen model file
         """
         self.polar_fitting.init_variables(model_file)
+=======
+                       graph: tf.Graph,
+                       graph_def: tf.GraphDef,
+                       suffix : str = "",
+    ) -> None:
+        """
+        Init the fitting net variables with the given dict
+
+        Parameters
+        ----------
+        graph : tf.Graph
+            The input frozen model graph
+        graph_def : tf.GraphDef
+            The input frozen model graph_def
+        suffix : str
+            suffix to name scope
+        """
+        self.polar_fitting.init_variables(graph=graph, graph_def=graph_def, suffix=suffix)
+>>>>>>> v2.1.1
 
 
     def enable_mixed_precision(self, mixed_prec : dict = None) -> None:

@@ -524,6 +524,7 @@ __global__ void tabulate_fusion_se_r_grad_fifth_order_polynomial(
   int warp_idx = __shfl(threadIdx.x / 64, 0);
   int lane_idx = threadIdx.x % 64;
 
+<<<<<<< HEAD
   bool unloop = false;
   FPTYPE * iteratorA = (FPTYPE *)&_data[0]; // dy
   for (int ii = 0; ii < MTILE; ii++) {
@@ -533,6 +534,8 @@ __global__ void tabulate_fusion_se_r_grad_fifth_order_polynomial(
   }
   __syncthreads();
 
+=======
+>>>>>>> v2.1.1
   for (int ii = 0; ii < nnei; ii += KTILE) {
     FPTYPE xx = em[block_idx * nnei + ii + warp_idx];
     

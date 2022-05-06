@@ -56,7 +56,7 @@ int format_nlist_i_fill_a (
   fill (fmt_nei_idx_r.begin(), fmt_nei_idx_r.end(), -1);  
   
   // gether all neighbors
-  std::vector<int > nei_idx (nei_idx_a);
+  std::vector<int > nei_idx (nei_idx_a);，
   nei_idx.insert (nei_idx.end(), nei_idx_r.begin(), nei_idx_r.end());
   assert (nei_idx.size() == nei_idx_a.size() + nei_idx_r.size());
   // allocate the information for all neighbors

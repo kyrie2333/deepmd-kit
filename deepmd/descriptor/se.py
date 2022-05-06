@@ -1,7 +1,11 @@
 from typing import Tuple, List
 
 from deepmd.env import tf
+<<<<<<< HEAD
 from deepmd.utils.graph import get_embedding_net_variables, get_tensor_by_name
+=======
+from deepmd.utils.graph import get_embedding_net_variables_from_graph_def, get_tensor_by_name_from_graph
+>>>>>>> v2.1.1
 from .descriptor import Descriptor
 
 
@@ -92,7 +96,8 @@ class DescrptSe (Descriptor):
         self.descrpt_reshape = descrpt_reshape
 
     def init_variables(self,
-                       model_file : str,
+                       graph: tf.Graph,
+                       graph_def: tf.GraphDef,
                        suffix : str = "",
     ) -> None:
         """
@@ -100,14 +105,22 @@ class DescrptSe (Descriptor):
 
         Parameters
         ----------
-        model_file : str
-            The input frozen model file
+        graph : tf.Graph
+            The input frozen model graph
+        graph_def : tf.GraphDef
+            The input frozen model graph_def
         suffix : str, optional
             The suffix of the scope
         """
+<<<<<<< HEAD
         self.embedding_net_variables = get_embedding_net_variables(model_file, suffix = suffix)
         self.davg = get_tensor_by_name(model_file, 'descrpt_attr%s/t_avg' % suffix)
         self.tavg = get_tensor_by_name(model_file, 'descrpt_attr%s/t_std' % suffix)
+=======
+        self.embedding_net_variables = get_embedding_net_variables_from_graph_def(graph_def, suffix = suffix)
+        self.davg = get_tensor_by_name_from_graph(graph, 'descrpt_attr%s/t_avg' % suffix)
+        self.dstd = get_tensor_by_name_from_graph(graph, 'descrpt_attr%s/t_std' % suffix)
+>>>>>>> v2.1.1
 
     @property
     def precision(self) -> tf.DType:
