@@ -28,7 +28,7 @@ public:
   * @param[in] gpu_rank The GPU rank. Default is 0.
   * @param[in] file_content The content of the model file. If it is not empty, DP will read from the string instead of the file.
   **/
-  void init (const std::string & model, const int & gpu_rank = 0, const std::string & file_content = "");
+  void (const std::string & model, const int & gpu_rank = 0, const std::string & file_content = "");
   /**
   * @brief Print the DP summary to the screen.
   * @param[in] pre The prefix to each line.
